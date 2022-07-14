@@ -8,7 +8,13 @@ jobs:
       - name: List files
         run: |
           pwd
-          ls
+          ls -a
+      - name: git checkout
+        uses: actions/checkout@v3.0.2
+      - name: List files After checkout
+        run: |
+          pwd
+          ls -a       
       - name: Simple JS Actions
         id: greet
         uses: actions/hello-world-javascript-action@main
