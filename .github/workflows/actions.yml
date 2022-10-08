@@ -32,4 +32,30 @@ jobs:
       - name: Log greeting time
         run: echo "${{ steps.greet.outputs.time}}"          
 
+  run-github-actions02:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List files 02
+        run: |
+          pwd
+          ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+          # git clone git@github:$GITHUB_REPOSITORY
+          # git checkout $GITHUB_SHA
+      - name: git checkout 02
+        uses: actions/checkout@v3.0.2
+      - name: List files After checkout
+        run: |
+          pwd
+          ls -a       
+      - name: Simple JS Actions02
+        id: greet
+        uses: actions/hello-world-javascript-action@main
+        with:
+          who-to-greet: Aftab
+      - name: Log greeting time
+        run: echo "${{ steps.greet.outputs.time}}"          
     
